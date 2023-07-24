@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <header>
+                <nav>
+                    <h2 class="books-total">Total Books: <span id="totalBooks">0</span></h2>    
+                    <h2 class="read-books">Books Read: <span id="booksRead">0</span></h2>
+                    <h2 class="unread-books">Books Unread: <span id="booksUnread">0</span></h2>
+                </nav>
+            </header>
+            <div class="main-content">
+                <div>
+                    <button class="new-book-btn">
+                        <svg width="40" height="40" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M64.167 75.8333H29.167V64.1667H64.167V29.1667H75.8337V64.1667H110.834V75.8333H75.8337V110.833H64.167V75.8333Z" fill="black"/>
+                        </svg>
+                        <span>New Book</span>
+                    </button>
+                    <div class="modal-box">
+                        <div class="input-form">
+                            <div class="input-form-container">
+                                <div class="close-btn-container">
+                                    <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="close-btn">
+                                        <path d="M26.6666 79.1667L20.8333 73.3333L44.1666 50L20.8333 26.6667L26.6666 20.8333L49.9999 44.1667L73.3333 20.8333L79.1666 26.6667L55.8332 50L79.1666 73.3333L73.3333 79.1667L49.9999 55.8333L26.6666 79.1667Z" fill="black"/>
+                                    </svg>                               
+                                </div>
+                                <form action="">
+                                    <div class="user-input">
+                                        <input type="text" id="title" placeholder="Title" required autocomplete="off">
+                                        <input type="text" id="author" placeholder="Author" required autocomplete="off">
+                                        <input type="number" id="pages" placeholder="Pages" required>
+                                        
+                                        <span>Have you read the book?</span>
+                                        <div class="read-book"> 
+                                            <div>
+                                                <input type="radio" id="yes" value="yes" name="group1">
+                                                <label for="yes">Yes</label>
+                                            </div>
+                                            
+                                            <div>
+                                                <input type="radio" id="no" value="no" name="group1">
+                                                <label for="no">No</label>
+                                            </div>
+                        
+                                        </div>
+                                    </div>
+                                    <div class="user-submit">
+                                        <input type="submit" value="Create Book">
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="book-container" id="bookContainer"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   
+    <div class="overlay"></div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
