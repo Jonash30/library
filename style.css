@@ -1,0 +1,234 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+main{
+    min-height: 100vh;
+    background: linear-gradient(to right top, #2dd4bf, #22d3ee);
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    margin: 0 1rem;
+    max-width: 1100px;
+    width: 100%;
+    min-height: 80vh;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+    border-radius: 1.5rem;
+}
+header{
+    height: 80px;
+    background-color: rgba(255, 255, 255, .7);
+    border-radius: 1.5rem;
+}
+nav{
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+}
+nav h2{
+    font-size: 1.5rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+nav h2 span{
+    font-weight: 700;
+}
+.new-book-btn{
+    background-color: rgba(255, 255, 255, .5);
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: .5rem;
+    padding: .3rem .8rem .3rem .4rem;
+    border-radius: 10px;
+    margin: 0 auto;
+    transition: transform 0.1s ease;
+}
+.new-book-btn:focus{
+    transform: scale(1.1);
+}
+.main-content{
+    padding: 1rem;
+    width: 100%;
+}
+.new-book-btn span{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.modal-box{
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    top: 20%;
+}
+.modal-box.active{
+    display: block;
+}
+.input-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-form-container{
+    background-color: #fff;
+    width: 400px;
+    border-radius: 15px;
+}
+.input-form form{
+    padding: 0 2rem 2rem;
+}
+.close-btn-container{
+    display: flex;
+    justify-content: end;
+}
+.close-btn{
+    text-align: end;
+    margin: 1rem 1rem;
+    cursor: pointer;
+}
+.user-input{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.read-book{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+.read-book label{
+    color: gray;
+}
+.user-input span{
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 1.3rem;
+    color: gray;
+}
+input[type="text"],
+input[type="number"]{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 1.3rem;
+}
+.user-submit{
+    padding-top: 1rem;
+    text-align: center;
+}
+input[type="submit"]{
+    padding: 10px 15px;
+    font-size: 1.3rem;
+    background-color: #06b6d4;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+input[type="submit"]:focus{
+    transform: scale(1.1);
+}
+.book-container{
+    width: 100%;
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+.book-card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    background-color: rgba(255, 255, 255, .7);
+    padding: 2rem 1rem .5rem 1rem;
+    border-radius: 10px;
+}
+.card-title{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.card-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mark-read{
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+}
+.read-btn{
+    background-color: rgba(0, 0, 0, .2);
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 .1rem;
+}
+.btn-indicator{
+    background-color: #fff;
+    width: 1.3rem;
+    height: 1.3rem;
+    position: absolute;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .2);
+    border-radius: 50%;
+    transition: transform .3s ease;
+}
+.btn-icon-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.toggle{
+    transform: translateX(1.47em);
+}
+.eye-on{
+    display: none;
+}
+.delete-btn{
+    cursor: pointer;
+}
+.overlay{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.overlay.active{
+    display: block;
+}
+
+@media (max-width: 635px) {
+    nav h2{
+        font-size: 1.2rem;
+
+    }
+}
