@@ -2,4 +2,4 @@
 
 Built using HTML, CSS, JavaScript
 
-Live Preview here: https://jonash30.github.io/library/
+Live Preview here: https://jonashgania.github.io/library/
