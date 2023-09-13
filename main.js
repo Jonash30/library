@@ -21,7 +21,6 @@ class Library {
 
   loadLibrary(){
     const storedData = localStorage.getItem('myLibrary');
-    console.log('Stored Data:', storedData);
 
     if(storedData === null){
       return [];
@@ -30,7 +29,6 @@ class Library {
     try{
       return JSON.parse(storedData);
     } catch (error) {
-      console.error('Error parsing JSON data from localStorage:', error);
       return [];
     }
   }
@@ -94,18 +92,23 @@ const displayBooks = () =>{
           eyeOn.style.display = 'block';
           eyeOff.style.display = 'none';
           book.read = 'yes';
+          updateReadBooks();
+          updateUnreadBooks();
+          updateTotalBooks();
         } else {
           eyeOn.style.display = 'none';
           eyeOff.style.display = 'block';
           book.read = 'no';
+          updateReadBooks();
+          updateUnreadBooks();
+          updateTotalBooks();
         }
   
         const markReadSpan = bookCard.querySelector('.mark-read span');
         markReadSpan.dataset.read = book.read;
         markReadSpan.textContent = book.read === 'yes' ? 'Mark as Unread' : 'Mark as Read';
   
-        updateReadBooks();
-        updateUnreadBooks();
+        
       });
     });
 }
@@ -121,7 +124,9 @@ const updateReadBooks = () => {
 }
 
 const updateUnreadBooks = () => {
-  const unReadBooks = library.totalBooks - library.readBooks;
+  const totalBooks = library.myLibrary.length;
+  const readBooks = library.myLibrary.filter((book) => book.read === 'yes').length;
+  const unReadBooks = totalBooks - readBooks;
   document.getElementById('booksUnread').textContent = unReadBooks;
 }
 
@@ -143,6 +148,10 @@ const formEventListener = () => {
     inputForm.classList.remove('active');
     overlay.classList.remove('active');
     form.reset();
+    displayBooks();
+    updateReadBooks();
+    updateUnreadBooks();
+    updateTotalBooks();
   });
 }
 
