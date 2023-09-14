@@ -131,24 +131,51 @@ const formEventListener = () => {
   const form = document.querySelector('form');
   const inputForm = document.querySelector('.modal-box');
   const overlay = document.querySelector('.overlay');
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const pages = document.getElementById('pages');
+  const titleError = document.querySelector('.title-error');
+  const authorError = document.querySelector('.author-error');
+  const pagesError = document.querySelector('.pages-error');
+
+  title.addEventListener('input', () => {
+    if(!title.validity.valueMissing){
+      titleError.textContent = '';
+    }
+  })
+
+  author.addEventListener('input', () => {
+    if(!author.validity.valueMissing){
+      authorError.textContent = '';
+    }
+  })
+
+  pages.addEventListener('input', () => {
+    if(!pages.validity.valueMissing){
+      pagesError.textContent = '';
+    }
+  })
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const pages = document.getElementById('pages').value;
-    const read = document.querySelector('input[name="group1"]:checked').value;
+    if(!title.validity.valid && !author.validity.valid && !pages.validity.valid){
+      formShowError();
 
-    const newBook = new Book(title, author, pages, read);
-    library.addBookToLibrary(newBook);
+    } else {
+      const read = document.querySelector('input[name="group1"]:checked').value;
 
-    inputForm.classList.remove('active');
-    overlay.classList.remove('active');
-    form.reset();
-    displayBooks();
-    updateReadBooks();
-    updateUnreadBooks();
-    updateTotalBooks();
+      const newBook = new Book(title.value, author.value, pages.value, read);
+      library.addBookToLibrary(newBook);
+
+      inputForm.classList.remove('active');
+      overlay.classList.remove('active');
+      form.reset();
+      displayBooks();
+      updateReadBooks();
+      updateUnreadBooks();
+      updateTotalBooks();
+    }
   });
 }
 
@@ -170,9 +197,15 @@ const closeFormEventListener = () => {
   const closeForm = document.querySelector('.close-btn');
   const inputForm = document.querySelector('.modal-box');
   const overlay = document.querySelector('.overlay');
+  const titleError = document.querySelector('.title-error');
+  const authorError = document.querySelector('.author-error');
+  const pagesError = document.querySelector('.pages-error');
   closeForm.addEventListener('click', () => {
     inputForm.classList.remove('active');
     overlay.classList.remove('active');
+    titleError.textContent = '';
+    authorError.textContent = '';
+    pagesError.textContent = '';
   });
 }
 
@@ -193,6 +226,23 @@ const documentEventListener = () => {
     }
   });
 }
+
+
+const formShowError = () => {
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const pages = document.getElementById('pages');
+  const titleError = document.querySelector('.title-error');
+  const authorError = document.querySelector('.author-error');
+  const pagesError = document.querySelector('.pages-error');
+
+  if(title.validity.valueMissing && author.validity.valueMissing && pages.validity.valueMissing){
+    titleError.textContent = '* Please fill title section';
+    authorError.textContent = '* Please fill author section';
+    pagesError.textContent = '* Please fill pages section';
+  }
+}
+
 
 formEventListener();
 addBookBtnEventListener();
