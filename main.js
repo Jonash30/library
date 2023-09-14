@@ -10,8 +10,9 @@ class Book{
 class Library {
   constructor() {
     this.myLibrary = this.loadLibrary() || [];
-    this.totalBooks = 0;
-    this.readBooks = 0;
+    this.totalBooks = this.myLibrary.length;
+    this.readBooks = this.myLibrary.filter((book) => book.read === 'yes').length;
+    this.updateStorage();
   }
 
   addBookToLibrary(book) {
@@ -21,20 +22,16 @@ class Library {
 
   loadLibrary(){
     const storedData = localStorage.getItem('myLibrary');
-
-    if(storedData === null){
-      return [];
-    }
-
-    try{
-      return JSON.parse(storedData);
-    } catch (error) {
-      return [];
-    }
+    return storedData ? JSON.parse(storedData) : [];
   }
 
   updateStorage(){
     localStorage.setItem('myLibrary', JSON.stringify(this.myLibrary));
+  }
+  updateCounts() {
+    this.totalBooks = this.myLibrary.length;
+    this.readBooks = this.myLibrary.filter((book) => book.read === 'yes').length;
+    this.updateStorage();
   }
 
 }
@@ -108,7 +105,7 @@ const displayBooks = () =>{
         markReadSpan.dataset.read = book.read;
         markReadSpan.textContent = book.read === 'yes' ? 'Mark as Unread' : 'Mark as Read';
   
-        
+        library.updateCounts();
       });
     });
 }
@@ -192,6 +189,7 @@ const documentEventListener = () => {
       updateReadBooks();
       updateUnreadBooks();
       library.updateStorage();
+      library.updateCounts();
     }
   });
 }
@@ -205,7 +203,4 @@ displayBooks();
 updateReadBooks();
 updateTotalBooks();
 updateUnreadBooks();
-
-
-/* Need to fix read/unread button save to local storage */
 
