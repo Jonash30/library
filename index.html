@@ -35,13 +35,23 @@
                                         <path d="M26.6666 79.1667L20.8333 73.3333L44.1666 50L20.8333 26.6667L26.6666 20.8333L49.9999 44.1667L73.3333 20.8333L79.1666 26.6667L55.8332 50L79.1666 73.3333L73.3333 79.1667L49.9999 55.8333L26.6666 79.1667Z" fill="black"/>
                                     </svg>                               
                                 </div>
-                                <form action="">
+                                <form action="" novalidate>
                                     <div class="user-input">
-                                        <input type="text" id="title" placeholder="Title" required autocomplete="off">
-                                        <input type="text" id="author" placeholder="Author" required autocomplete="off">
-                                        <input type="number" id="pages" placeholder="Pages" required>
+                                        <div class="title-wrap">
+                                            <input type="text" id="title" placeholder="Title" required autocomplete="off">
+                                            <span class="title-error"></span>
+                                        </div>
+                                        <div class="author-wrap">
+                                            <input type="text" id="author" placeholder="Author" required autocomplete="off">
+                                            <span class="author-error"></span>
+                                        </div>
+                                        <div class="pages-wrap">
+                                            <input type="number" id="pages" placeholder="Pages" required>
+                                            <span class="pages-error"></span>
+                                        </div>
                                         
-                                        <span>Have you read the book?</span>
+                                        
+                                        <span class="read-question-span">Have you read the book?</span>
                                         <div class="read-book"> 
                                             <div>
                                                 <input type="radio" id="yes" value="yes" name="group1">
