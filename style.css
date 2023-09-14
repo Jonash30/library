@@ -115,12 +115,6 @@ nav h2 span{
 .read-book label{
     color: gray;
 }
-.user-input span{
-    padding-top: 1rem;
-    text-align: center;
-    font-size: 1.3rem;
-    color: gray;
-}
 input[type="text"],
 input[type="number"]{
     padding: 10px;
@@ -225,7 +219,21 @@ input[type="submit"]:focus{
 .overlay.active{
     display: block;
 }
-
+.read-question-span{
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 1.3rem;
+    color: gray;
+}
+.title-wrap, .author-wrap, .pages-wrap{
+    display: flex;
+    flex-direction: column;
+}
+.title-wrap span, .author-wrap span, .pages-wrap span{
+    font-size: .8rem;
+    color: red;
+    padding-left: 1rem;
+}
 @media (max-width: 635px) {
     nav h2{
         font-size: 1.2rem;
